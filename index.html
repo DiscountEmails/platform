@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DiscountEmails.com - Affordable Email Solutions</title>
+    <style>
+        :root {
+            --primary-color: #0071e3;
+            --secondary-color: #1d1d1f;
+            --background-color: #f5f5f7;
+            --text-color: #1d1d1f;
+            --light-gray: #86868b;
+            --white: #ffffff;
+            --success-color: #4CAF50;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.5;
+        }
+        
+        header {
+            background-color: var(--white);
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+        }
+        
+        .nav-links a {
+            margin-left: 2rem;
+            text-decoration: none;
+            color: var(--secondary-color);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 6rem 0 4rem;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--light-gray);
+            max-width: 800px;
+            margin-bottom: 2rem;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+        
+        .feature {
+            background-color: var(--white);
+            border-radius: 1rem;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .feature:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+        
+        .feature h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .pricing {
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .pricing h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .plans {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .plan {
+            background-color: var(--white);
+            border-radius: 1rem;
+            padding: 2.5rem;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            width: 350px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .plan:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .plan h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        .plan-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+        
+        .plan-features {
+            margin-bottom: 2rem;
+            text-align: left;
+            list-style: none;
+        }
+        
+        .plan-features li {
+            margin-bottom: 0.8rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .plan-features li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--success-color);
+            font-weight: bold;
+        }
+        
+        .cta-section {
+            background-color: var(--white);
+            padding: 5rem 0;
+            text-align: center;
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta-section p {
+            font-size: 1.2rem;
+            color: var(--light-gray);
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+        }
+        
+        .cta-form {
+            display: flex;
+            flex-direction: column;
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: var(--background-color);
+            padding: 2rem;
+            border-radius: 1rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        input:focus, select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 1rem 2rem;
+            border-radius: 2rem;
+            font-weight: 600;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            font-size: 1rem;
+        }
+        
+        .btn:hover {
+            background-color: #005ac1;
+            transform: translateY(-2px);
+        }
+        
+        footer {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            padding: 3rem 0;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        
+        .footer-column {
+            width: 250px;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-column h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-column ul li a {
+            color: #a1a1a6;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--white);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid #424245;
+            color: #a1a1a6;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.3rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .plans {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+        }
+        
+        .total-price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+        
+        .feedback {
+            padding: 1rem;
+            margin-top: 1rem;
+            border-radius: 0.5rem;
+            display: none;
+        }
+        
+        .feedback.success {
+            background-color: rgba(76, 175, 80, 0.1);
+            color: var(--success-color);
+            border: 1px solid var(--success-color);
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">DiscountEmails.com</div>
+                <div class="nav-links">
+                    <a href="#features">Features</a>
+                    <a href="#pricing">Pricing</a>
+                    <a href="#cta">Get Started</a>
+                    <a href="#support">Support</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="container">
+            <h1>Professional Email Solutions</h1>
+            <p class="hero-subtitle">Unlock the power of Google Workspace with 30GB storage for your business.</p>
+            <a href="#cta" class="btn">Get Started</a>
+        </div>
+    </section>
+    
+    <section id="features" class="container">
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">📧</div>
+                <h3>Google Workspace</h3>
+                <p>Full access to Google's productivity suite, including Gmail, Drive, Docs, Sheets, and more.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">☁️</div>
+                <h3>30GB Storage</h3>
+                <p>Generous storage space for all your important emails, attachments, and documents.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🛡️</div>
+                <h3>Enhanced Security</h3>
+                <p>Advanced security features to protect your business communications and data.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <h2>Choose Your Plan</h2>
+            <div class="plans">
+                <div class="plan">
+                    <h3>Starter Package</h3>
+                    <div class="plan-price">$50</div>
+                    <p>Perfect for small teams</p>
+                    <ul class="plan-features">
+                        <li>10 Email Licenses</li>
+                        <li>Google Workspace Access</li>
+                        <li>30GB Storage Per User</li>
+                        <li>24/7 Support</li>
+                        <li>Spam & Malware Protection</li>
+                    </ul>
+                    <a href="#cta" class="btn">Get Started</a>
+                </div>
+                <div class="plan">
+                    <h3>Business Package</h3>
+                    <div class="plan-price">$450</div>
+                    <p>Ideal for growing companies</p>
+                    <ul class="plan-features">
+                        <li>100 Email Licenses</li>
+                        <li>Google Workspace Access</li>
+                        <li>30GB Storage Per User</li>
+                        <li>Priority 24/7 Support</li>
+                        <li>Enhanced Security Features</li>
+                        <li>Team Management Tools</li>
+                    </ul>
+                    <a href="#cta" class="btn">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="cta" class="cta-section">
+        <div class="container">
+            <h2>Get Started Today</h2>
+            <p>Select how many email licenses you need and take your business to the next level.</p>
+            <form class="cta-form" id="email-form">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Business Email</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="company">Company Name</label>
+                    <input type="text" id="company" required>
+                </div>
+                <div class="form-group">
+                    <label for="licenses">Number of Email Licenses</label>
+                    <select id="licenses" required>
+                        <option value="">Select an option</option>
+                        <option value="10">10 Licenses ($50)</option>
+                        <option value="100">100 Licenses ($450)</option>
+                        <option value="custom">Custom Amount</option>
+                    </select>
+                </div>
+                <div class="form-group" id="custom-licenses-group" style="display: none;">
+                    <label for="custom-licenses">Enter License Count (Min 5)</label>
+                    <input type="number" id="custom-licenses" min="5" value="5">
+                </div>
+                <div class="total-price" id="total-price">Total: $0</div>
+                <button type="submit" class="btn">Buy Now</button>
+                <div class="feedback" id="feedback"></div>
+            </form>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h4>DiscountEmails.com</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Products</h4>
+                    <ul>
+                        <li><a href="#">Email Solutions</a></li>
+                        <li><a href="#">Google Workspace</a></li>
+                        <li><a href="#">G Suite</a></li>
+                        <li><a href="#">Enterprise Solutions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4 id="support">Support</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">System Status</a></li>
+                        <li><a href="#">Documentation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Security</a></li>
+                        <li><a href="#">Compliance</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>© 2025 DiscountEmails.com. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Handle custom license selection
+        const licenseSelect = document.getElementById('licenses');
+        const customLicensesGroup = document.getElementById('custom-licenses-group');
+        const customLicenseInput = document.getElementById('custom-licenses');
+        const totalPriceElement = document.getElementById('total-price');
+        const form = document.getElementById('email-form');
+        const feedbackElement = document.getElementById('feedback');
+        
+        // Price calculations
+        const calculatePrice = (licenses) => {
+            if (licenses <= 10) {
+                return licenses * 5; // $5 per license for up to 10
+            } else if (licenses <= 100) {
+                return licenses * 4.5; // $4.50 per license for up to 100
+            } else {
+                return licenses * 4; // $4 per license for over 100
+            }
+        };
+        
+        // Update total price
+        const updateTotalPrice = () => {
+            let licenses = 0;
+            if (licenseSelect.value === 'custom') {
+                licenses = parseInt(customLicenseInput.value) || 0;
+            } else if (licenseSelect.value) {
+                licenses = parseInt(licenseSelect.value);
+            }
+            
+            const price = calculatePrice(licenses);
+            totalPriceElement.textContent = `Total: $${price.toFixed(2)}`;
+        };
+        
+        // License selection change handler
+        licenseSelect.addEventListener('change', () => {
+            if (licenseSelect.value === 'custom') {
+                customLicensesGroup.style.display = 'block';
+            } else {
+                customLicensesGroup.style.display = 'none';
+            }
+            updateTotalPrice();
+        });
+        
+        // Custom license input change handler
+        customLicenseInput.addEventListener('input', updateTotalPrice);
+        
+        // Form submit handler
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const company = document.getElementById('company').value;
+            
+            // Get license count
+            let licenses = 0;
+            if (licenseSelect.value === 'custom') {
+                licenses = parseInt(customLicenseInput.value) || 0;
+            } else {
+                licenses = parseInt(licenseSelect.value) || 0;
+            }
+            
+            // Validate form
+            if (!name || !email || !company || licenses < 1) {
+                feedbackElement.textContent = 'Please fill in all required fields.';
+                feedbackElement.className = 'feedback error';
+                return;
+            }
+            
+            // Calculate final price
+            const price = calculatePrice(licenses);
+            
+            // Success message (in a real scenario, this would submit to a payment processor)
+            feedbackElement.textContent = `Thank you! Your order for ${licenses} email licenses (Total: $${price.toFixed(2)}) has been received. We'll contact you shortly.`;
+            feedbackElement.className = 'feedback success';
+            
+            // Reset form
+            form.reset();
+            customLicensesGroup.style.display = 'none';
+            updateTotalPrice();
+            
+            // Scroll to feedback
+            feedbackElement.scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
